@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 echo updating system
 pkgman update -y
 
@@ -20,12 +22,12 @@ build_ffmpeg() {
 	rm -rf $target_dir
 	echo begin building
 	begin=`date`
-	./fate.sh $conf_file
+	/boot/home/ffmpeg/tests/fate.sh $conf_file
 	echo $begin
 	date
 }
 
-build_ffmpeg ~/fate_config.sh ~/ffmpeg-build
-build_ffmpeg ~/fate_config_shared.sh ~/ffmpeg-build-shared
+this_dir="$(dirname "$(readlink -f "$0")")"
 
-shutdown
+build_ffmpeg "$this_dir/fate_config.sh" ~/ffmpeg-build
+build_ffmpeg "$this_dir/fate_config_shared.sh" ~/ffmpeg-build-shared

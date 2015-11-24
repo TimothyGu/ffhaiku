@@ -1,4 +1,4 @@
 #!/bin/sh
 
-Terminal /boot/home/ffmpeg.sh
-
+Terminal /boot/home/ffhaiku/ffmpeg.sh
+shutdown
